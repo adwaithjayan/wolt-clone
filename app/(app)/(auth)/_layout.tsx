@@ -80,6 +80,7 @@ const Layout = () => {
       <Stack.Screen
         name="order"
         options={{
+          headerShown:false,
           enableTransitions: true,
           ...Transition.presets.SharedXImage(),
         }}

@@ -17,16 +17,16 @@ const RestaurantListPage = () => {
   });
   return (
     <View style={styles.container}>
-      <RestaurantHeader title="Stores" scrollOffset={scrollOffset} />
+      <RestaurantHeader title="Restaurants" scrollOffset={scrollOffset} />
       <Animated.ScrollView
         onScroll={scrollHandler}
         scrollEventThrottle={16}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingTop: insets.top + HEADER_HEIGHT }}>
-        <Text style={styles.pageTitle}>Stores</Text>
+        <Text style={styles.pageTitle}>Restaurants</Text>
         <CategoryList />
 
-        <Text style={styles.allRestaurantsTitle}>All stores</Text>
+        <Text style={styles.allRestaurantsTitle}>All restaurants</Text>
         <RestaurantList />
       </Animated.ScrollView>
     </View>

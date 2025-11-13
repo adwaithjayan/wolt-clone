@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Animated, {
-    scrollTo,
-    useAnimatedReaction,
-    useAnimatedRef,
-    useSharedValue,
-    withRepeat,
-    withTiming,
+  scrollTo,
+  useAnimatedReaction,
+  useAnimatedRef,
+  useSharedValue,
+  withRepeat,
+  withTiming,
 } from 'react-native-reanimated';
 
 const iconDataSets = {

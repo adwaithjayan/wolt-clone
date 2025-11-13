@@ -1,90 +1,68 @@
-import { Stack } from '@/components/Stack';
-import { Colors } from '@/constants/theme';
-import { Ionicons } from '@expo/vector-icons';
-import { useRouter } from 'expo-router';
-import { TouchableOpacity } from 'react-native';
-import Transition from 'react-native-screen-transitions';
+import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
+import Ionicons from '@expo/vector-icons/Ionicons';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import { Tabs } from 'expo-router';
 
 const Layout = () => {
-  const router = useRouter();
   return (
-    <Stack>
-      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      <Stack.Screen
-        name="(modal)/(restaurant)/[id]"
+    <Tabs
+      screenOptions={{
+        tabBarLabelStyle: {
+          fontSize: 9,
+          fontWeight: '600',
+        },
+      }}>
+      <Tabs.Screen
+        name="restaurants"
         options={{
-          ...Transition.presets.DraggableCard(),
-        }}
-      />
-      <Stack.Screen
-        name="(modal)/map"
-        options={{
-          ...Transition.presets.SharedAppleMusic(),
-        }}
-      />
-      <Stack.Screen
-        name="(modal)/location"
-        options={{
-          presentation: 'formSheet',
-          sheetAllowedDetents: [0.7],
-          title: '',
-          headerShadowVisible: false,
-          sheetCornerRadius: 16,
-          sheetGrabberVisible: true,
-          headerRight: () => (
-            <TouchableOpacity
-              style={{ padding: 4, borderRadius: 20, backgroundColor: Colors.light }}
-              onPress={() => router.dismiss()}>
-              <Ionicons name="close-sharp" size={28} />
-            </TouchableOpacity>
-          ),
-        }}
-      />
-      <Stack.Screen
-        name="(modal)/filter"
-        options={{
-          presentation: 'formSheet',
-          sheetAllowedDetents: [0.8],
-          title: '',
-          headerShadowVisible: false,
-          sheetCornerRadius: 16,
-          sheetGrabberVisible: true,
-          contentStyle: {
-            backgroundColor: Colors.background,
-          },
-          headerRight: () => (
-            <TouchableOpacity
-              style={{ padding: 4, borderRadius: 20, backgroundColor: Colors.light }}
-              onPress={() => router.dismiss()}>
-              <Ionicons name="close-sharp" size={28} />
-            </TouchableOpacity>
-          ),
-        }}
-      />
-      <Stack.Screen
-        name="(modal)/(menu)/[id]"
-        options={{
-          presentation: 'formSheet',
-          sheetAllowedDetents: [1],
-          title: '',
-          headerShadowVisible: false,
-          sheetCornerRadius: 16,
-          sheetGrabberVisible: true,
-          sheetExpandsWhenScrolledToEdge: true,
+          title: 'Restaurants',
           headerShown: false,
-          contentStyle: {
-            backgroundColor: '#fff',
-          },
+          tabBarIcon: ({ color, size }) => (
+            <MaterialIcons name="restaurant" color={color} size={size} />
+          ),
         }}
       />
-      <Stack.Screen
-        name="order"
+      <Tabs.Screen
+        name="discovery"
         options={{
-          enableTransitions: true,
-          ...Transition.presets.SharedXImage(),
+          title: 'Discovery',
+          tabBarIcon: ({ color, size, focused }) => (
+            <Ionicons name={focused ? 'compass' : 'compass-outline'} color={color} size={size} />
+          ),
         }}
       />
-    </Stack>
+      <Tabs.Screen
+        name="stores"
+        options={{
+          title: 'Stores',
+          headerShown: false,
+          tabBarIcon: ({ color, size, focused }) => (
+            <Ionicons
+              name={focused ? 'storefront' : 'storefront-outline'}
+              color={color}
+              size={size}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="search"
+        options={{
+          title: 'Search',
+          tabBarIcon: ({ color, size, focused }) => (
+            <FontAwesome5 name={focused ? 'search-location' : 'search'} color={color} size={size} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="profile"
+        options={{
+          title: 'Profile',
+          headerShown: false,
+          tabBarIcon: ({ color, size }) => <Ionicons name={'person'} color={color} size={size} />,
+        }}
+      />
+    </Tabs>
   );
 };
 export default Layout;

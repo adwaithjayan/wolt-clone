@@ -1,5 +1,5 @@
-import AppleAuthButton from '@/components/auth/appleButton';
-import GoogleAuthButton from '@/components/auth/googleButton';
+import AppleAuthButton from '@/components/auth/AppleAuthButton';
+import GoogleAuthButton from '@/components/auth/GoogleAuthButton';
 import { Colors, Fonts } from '@/constants/theme';
 import useUserStore from '@/hooks/use-userstore';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
